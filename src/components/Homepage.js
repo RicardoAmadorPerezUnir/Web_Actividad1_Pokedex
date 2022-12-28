@@ -27,17 +27,40 @@ const searched_pokemon_request = (searched_pokemon) => {
       } catch (err) {
         console.log(err.message);
     };
-  
+  }
+}
 
 function Homepage() {
-    return (
-        <div className="search">
-            <label for="pokemon_search_text">Pokémon:</label>
-            <input type="text" id="pokemon_search_field" name="pokemon_search_field" value="Charizard"/>
-            <button type="submit", onClick={searched_pokemon_request}>Busca</button>
-            <div className="search-results">
-                {Entry}
-            </div>
-        </div>
+    return React.createElement(
+        'div',
+        {className: 'Homepage'},
+        React.createElement(
+            'h1',
+            {className: 'title'},
+            'Pokédex'
+        ),
+        React.createElement(
+            'div',
+            {className: 'search'},  
+            React.createElement(
+                'label',
+                {for: 'pokemon_search_text'},
+                'Pokémon:'
+            ),
+            React.createElement(
+                'input',
+                {type: 'text', id: 'pokemon_search_field', name: 'pokemon_search_field', value: 'Charizard'}
+            ),
+            React.createElement(
+                'button',
+                {type: 'submit', onClick: searched_pokemon_request},
+                'Busca'
+            ),
+            React.createElement(
+                'div',
+                {className: 'search-results'},
+                Entry
+            )
+        )
     );
 }
