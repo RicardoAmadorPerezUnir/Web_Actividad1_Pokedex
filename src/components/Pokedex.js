@@ -1,40 +1,22 @@
-import React from 'react'
-import PokedexScreen from './PokedexScreen'
-import PokemonForm from './PokemonForm'
-import './../styles/Pokedex.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// function Pokedex(){
-//   return (
-//     <div className="pokedex">
-//       <div className="pokedex-left">
-//         <div className="pokedex-left-top">
-//           <div className='light is-sky is-big'/>
-//           <div className="light is-red" />
-//           <div className="light is-yellow" />
-//           <div className="light is-green" />
-//         </div>
-//         <div className="pokedex-screen-container">
-//           <PokedexScreen />
-//         </div>
-//         <div className="pokedex-left-bottom">
-//           <div className="pokedex-left-bottom-lights">
-//             <div className="light is-blue is-medium" />
-//             <div className="light is-green is-large" />
-//             <div className="light is-orange is-large" />
-//           </div>
-//           <PokemonForm />
-//         </div>
-//       </div>
-//       <div className="pokedex-right-front" />
-//       <div className="pokedex-right-back" />
-//     </div>
-//   )
-// }
+function PokemonList() {
+  const [pokemon, setPokemon] = useState([]);
 
-// export default Pokedex
-
-async function getPokemonData(pokemonName) {
-    const response = await fetch(`pokemon?limit=151`);
-    const data = await response.json();
-    return data;
+  useEffect(() => {
+    async function fetchPokemon() {
+      const result = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+      setPokemon(result.data.results);
     }
+    fetchPokemon();
+  }, []);
+
+  return (
+    <ul>
+      {pokemon.map(p => (
+        <li key={p.name}>{p.name}</li>
+      ))}
+    </ul>
+  );
+}

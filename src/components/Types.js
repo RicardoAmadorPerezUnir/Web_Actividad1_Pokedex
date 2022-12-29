@@ -1,15 +1,22 @@
-// React component for showing all the types of pokemon
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React from 'react';
-import './Types.css';
+function PokemonTypes() {
+  const [types, setTypes] = useState([]);
 
-function Types(data) {
-    return (
-        <div className="types">
-        <div className="types-body">
-            <h5 className="types-title">{data.name}</h5>
-            <p className="types-type">{data.type}</p>
-        </div>
-        </div>
-    );
+  useEffect(() => {
+    async function fetchTypes() {
+      const result = await axios.get('https://pokeapi.co/api/v2/type');
+      setTypes(result.data.results);
+    }
+    fetchTypes();
+  }, []);
+
+  return (
+    <ul>
+      {types.map(t => (
+        <li key={t.name}>{t.name}</li>
+      ))}
+    </ul>
+  );
 }
