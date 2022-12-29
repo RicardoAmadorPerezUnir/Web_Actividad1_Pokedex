@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function PokemonSearch() {
-  const [query, setQuery] = useState('');
+  const [query_pokemon, setSearch] = useState('');
   const [pokemon, setPokemon] = useState(null);
 
   async function handleSearch() {
-    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${query}`);
+    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${query_pokemon}`);
     setPokemon(result.data);
   }
 
@@ -14,8 +14,8 @@ function PokemonSearch() {
     <div>
       <input
         type="text"
-        value={query}
-        onChange={event => setQuery(event.target.value)}
+        value={query_pokemon}
+        onChange={event => setSearch(event.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
       {pokemon ? (
@@ -30,13 +30,13 @@ function PokemonSearch() {
 
 
 
-// const searched_pokemon_request = (searched_pokemon) => {
+// const query_pokemon_request = (query_pokemon) => {
 //     const [data, setData] = useState();
   
 //     const handleClick = async () => {
 //       setIsLoading(true);
 //       try {
-//         url = 'https://pokeapi.co/api/v2/pokemon/' + searched_pokemon;
+//         url = 'https://pokeapi.co/api/v2/pokemon/' + query_pokemon;
 //         const response = await fetch(url, {method: 'GET'});
   
 //         if (!response.ok) {
@@ -75,7 +75,7 @@ function PokemonSearch() {
 //             ),
 //             React.createElement(
 //                 'button',
-//                 {type: 'submit', onClick: searched_pokemon_request},
+//                 {type: 'submit', onClick: query_pokemon_request},
 //                 'Busca'
 //             ),
 //             React.createElement(
