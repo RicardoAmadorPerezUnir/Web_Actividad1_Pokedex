@@ -1,7 +1,6 @@
 import React from 'react';
-import './Movements.css';
 
-function Movements(data) {
+export function Movimientos(data) {
     return (
         <div className="movements">
         <div className="movements-body">
