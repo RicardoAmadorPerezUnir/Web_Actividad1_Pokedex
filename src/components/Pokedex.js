@@ -24,6 +24,9 @@ export const Pokedex = (props) => {
         <div className="pokemonName">
           {pokemon.name}
         </div>
+        <div>
+            <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.slice(34, -1)}.png"} alt="pokemon"/>
+        </div>
         <button className="pokedexButton" onClick={() => {
           axios.get(pokemon.url)
             .then((response) => {
@@ -78,7 +81,7 @@ const ContenedorPokedex = styled.div`
 
 const SModal = styled(Modal)`
     .ficha{
-        width: 50%;
+        width: 75%;
     }
 `;
 

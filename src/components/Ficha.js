@@ -7,6 +7,9 @@ export const Ficha = (props) => {
     var types = props.data.types.map((type) => {
         return <li>{type.type.name}</li>
     });
+    var stats = props.data.stats.map((stat) => {
+        return <li>{stat.stat.name}: {stat.base_stat}</li>
+    });
     const [show, setShow] = useState(props.showToast);(
     useEffect(() => {
         setShow(props.showToast);
@@ -24,6 +27,16 @@ export const Ficha = (props) => {
                 <div className="fichaTypes">
                     Tipos:
                     <ul>{types}</ul>
+                </div>
+                <div className="fichaAltura">
+                    Altura: {props.data.height /10} m
+                </div>
+                <div className="fichaPeso">
+                    Peso: {props.data.weight /10} kg
+                </div>
+                <div className="fichaStats">
+                    Stats:
+                    <ul>{stats}</ul>
                 </div>
             </div>
             <button className="fichaButton" onClick={() => props.guardar(props.data)}>Añadir a mi equipo
