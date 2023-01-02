@@ -41,7 +41,7 @@ export const Inicio = (props) => {
       />
       <button id="buscar" onClick={handleSearch}>Buscar</button>
       {pokemon && (
-        <Ficha data={pokemon} guardar={props.guardarPokemon} eliminar={props.eliminiarPokemon}/>
+        <Ficha data={pokemon} team={props.props.team} setTeam={props.props.setTeam}/>
       )}
       <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide>
         <Toast.Body>

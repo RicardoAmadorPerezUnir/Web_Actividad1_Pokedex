@@ -13,44 +13,67 @@ export function Tipos() {
     }
     fetchTypes();
   }, []);
+  async function fetchTypeDetails(type) {
+    if (type.name !== "unknown"){
+      const result = await axios.get(type.url);
+      setTypeDetails([...typeDetails,[type.name, result.data]]); 
+    }  
+  } 
 
-  var tipos;
   useEffect(() => {
-    debugger
     if(types.length>0)
-      types.map((type)=>{
-        async function fetchTypeDetails(type) {
-          const result = await axios.get(type.url);
-          setTypeDetails(result.data);
-          tipos = 
-          <ContenedorTipo>
-            <div>
-              {type.name}
-              {result.data.move_damage_class.name}
-            </div>
-          </ContenedorTipo>
-        }
+      types.forEach((type)=>{
         fetchTypeDetails(type);
       })
   }, [types]);
 
-  
-  // var tipos = types.map((type) => {    
-  //   return (
-  //     typeDetails.length>0 ? <ContenedorTipo>
-  //       <div>
-  //         {type.name}
-  //         {typeDetails.move_damage_class.name}
-  //       </div>
-  //     </ContenedorTipo>:null
-  //   )
-  // });
-
+  var tipos = typeDetails.map((type) => {
+    return (
+      <ContenedorTipo>
+          <div>
+            {/*Nombre*/}
+            <div>{type[0]}</div>
+            <div>
+              <div>
+                Recibe daño doble de:
+                {type[1].damage_relations.double_damage_from.map((x)=>{
+                  return x;
+                })}
+              </div>
+              {/* <div>
+                Hace daño doble a
+                {type[1].damage_relations.double_damage_from}
+              </div>
+              <div>
+                Recibe la mitad de daño de
+                {type[1].damage_relations.double_damage_from}
+              </div>
+              <div>
+                Hace la mitad de daño a
+                {type[1].damage_relations.double_damage_from}
+              </div>
+              <div>
+                No recibe daño de
+                {type[1].damage_relations.double_damage_from}
+              </div>
+              <div>
+                No hace daño a
+                {type[1].damage_relations.double_damage_from}
+              </div> */}
+            </div>
+          </div>
+      </ContenedorTipo>
+    )
+  })
 
   return (
-    <ContenedorListaTipos>
-      {tipos}
-    </ContenedorListaTipos>
+    // <ContenedorListaTipos>
+    //   {tipos.map((x)=>{
+    //     debugger
+    //     return x;
+    //   })}
+    // </ContenedorListaTipos>
+    <div>En construcción</div>
   )
 }
 

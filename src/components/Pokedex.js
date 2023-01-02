@@ -25,7 +25,7 @@ export const Pokedex = (props) => {
           {pokemon.name}
         </div>
         <div>
-            <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.slice(34, -1)}.png"} alt="pokemon"/>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.slice(34, -1)}.png`} alt="pokemon"/>
         </div>
         <button className="pokedexButton" onClick={() => {
           axios.get(pokemon.url)
@@ -53,11 +53,8 @@ export const Pokedex = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <Ficha 
-                    data={pokemon_details} 
-                    guardar={props.props.guardarPokemon} 
-                    eliminar={props.props.eliminarPokemon} 
-                    showToast={props.props.showToast}
-                    teamText={props.props.teamText}/>
+                    data={pokemon_details}
+                    team={props.props.team} setTeam={props.props.setTeam}/>
             </Modal.Body>
           </SModal>
         </ContenedorPokedex>

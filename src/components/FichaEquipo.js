@@ -3,21 +3,15 @@ import styled from 'styled-components';
 
 import { Toast } from 'react-bootstrap';
 
-export const Ficha = (props) => {
+export const FichaEquipo = (props) => {
     const [show, setShow] = useState(false);
     const [teamText, setTeamText] = useState('');
     
-    const guardarPokemon = (pokemon_json) => {
-        if (props.team.length < 6) {
-          props.setTeam([...props.team, pokemon_json]);
-          setTeamText("Pokemon agregado al equipo");
-          setShow(true);
-        }
-        else {
-          setTeamText("El equipo está lleno");
-          setShow(true);
-        }
-      }
+    const eliminarPokemon = (pokemon) => {
+        console.log(pokemon);
+        props.setTeam(props.team.filter((x)=>x!==pokemon));
+        setShow(true);
+    }
 
     var types = props.data.types.map((type) => {
         return <li>{type.type.name}</li>
@@ -28,41 +22,41 @@ export const Ficha = (props) => {
 
 
     return (
-        <ContenedorFicha className="ficha">
-            <div className="fichaName">
+        <ContenedorFichaEquipo className="fichaEquipo">
+            <div className="fichaEquipoName">
                 {props.data.name}
             </div>
-            <div className="fichaSprite">
+            <div className="fichaEquipoSprite">
                 <img src={props.data.sprites.front_default} alt="sprite"/>
             </div>
-            <div className="fichaProperties">
-                <div className="fichaTypes">
+            <div className="fichaEquipoProperties">
+                <div className="fichaEquipoTypes">
                     Tipos:
                     <ul>{types}</ul>
                 </div>
-                <div className="fichaAltura">
+                <div className="fichaEquipoAltura">
                     Altura: {props.data.height /10} m
                 </div>
-                <div className="fichaPeso">
+                <div className="fichaEquipoPeso">
                     Peso: {props.data.weight /10} kg
                 </div>
-                <div className="fichaStats">
+                <div className="fichaEquipoStats">
                     Stats:
                     <ul>{stats}</ul>
                 </div>
             </div>
-            <button className="fichaButton" onClick={() => guardarPokemon(props.data)}>Añadir a mi equipo
+            <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.data)}>Eliminar del equipo
             </button>
             <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
                 <Toast.Body>
-                {teamText}
+                Se ha eliminado el pokemon del equipo
                 </Toast.Body>
             </Toast>
-        </ContenedorFicha>
+        </ContenedorFichaEquipo>
     );
 }
 
-const ContenedorFicha = styled.div`
+const ContenedorFichaEquipo = styled.div`
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -73,7 +67,7 @@ const ContenedorFicha = styled.div`
     width: 25%;
     padding: 2rem;
 
-    .fichaName {
+    .fichaEquipoName {
         text-transform: capitalize;
     }
 
