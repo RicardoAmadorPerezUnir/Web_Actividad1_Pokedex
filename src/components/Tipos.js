@@ -11,7 +11,7 @@ export function Tipos() {
   useEffect(() => {
     async function fetchTypes() {
       const result = await axios.get('https://pokeapi.co/api/v2/type');
-      setTypes(result.data.results.filter((x)=>x.name!=="unknown"));
+      setTypes(result.data.results.filter((x)=>x.name!=="unknown"&&x.name!=="shadow"));
     }
     fetchTypes();
   }, []);
@@ -48,16 +48,4 @@ const ContenedorListaTipos = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 100vh;
-  background-color: #f5f5f5;
-`;
-
-const ContenedorTipo = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 10%;
-  height: 50vh;
-  background-color: #f5f5f5;
 `;

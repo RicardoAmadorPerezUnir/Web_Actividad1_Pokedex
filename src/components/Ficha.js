@@ -1,4 +1,5 @@
 import React , { useEffect, useState } from 'react';
+import { useContador } from '../hooks/useContador';
 import styled from 'styled-components';
 
 import { Toast } from 'react-bootstrap';
@@ -6,12 +7,13 @@ import { Toast } from 'react-bootstrap';
 export const Ficha = (props) => {
     const [show, setShow] = useState(false);
     const [teamText, setTeamText] = useState('');
+    const {contador, incrementar} = useContador(props.team.length + 1);
     
     const guardarPokemon = (pokemon_json) => {
         if (props.team.length < 6) {
-          props.setTeam([...props.team, pokemon_json]);
-          setTeamText("Pokemon agregado al equipo");
-          setShow(true);
+            props.setTeam([...props.team, [contador, pokemon_json]]);
+            setTeamText(`Pokemon agregado al equipo. Pokemon en el equipo: ${contador}`);
+            setShow(true);
         }
         else {
           setTeamText("El equipo está lleno");
@@ -20,7 +22,7 @@ export const Ficha = (props) => {
       }
 
     var types = props.data.types.map((type) => {
-        return <li>{type.type.name}</li>
+        return <div className="pill" style={{backgroundColor:`var(--${type.type.name})`}}>{type.type.name}</div>
     });
     var stats = props.data.stats.map((stat) => {
         return <li>{stat.stat.name}: {stat.base_stat}</li>
@@ -38,7 +40,7 @@ export const Ficha = (props) => {
             <div className="fichaProperties">
                 <div className="fichaTypes">
                     Tipos:
-                    <ul>{types}</ul>
+                    <TiposDiv>{types}</TiposDiv>
                 </div>
                 <div className="fichaAltura">
                     Altura: {props.data.height /10} m
@@ -51,7 +53,7 @@ export const Ficha = (props) => {
                     <ul>{stats}</ul>
                 </div>
             </div>
-            <button className="fichaButton" onClick={() => guardarPokemon(props.data)}>Añadir a mi equipo
+            <button className="fichaButton" onClick={() => {guardarPokemon(props.data);incrementar()}}>Añadir a mi equipo
             </button>
             <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
                 <Toast.Body>
@@ -80,4 +82,8 @@ const ContenedorFicha = styled.div`
     li {
         text-transform: capitalize;
     }
+`;
+
+const TiposDiv = styled.div`
+    display:flex;
 `;

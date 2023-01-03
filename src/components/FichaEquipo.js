@@ -5,11 +5,9 @@ import { Toast } from 'react-bootstrap';
 
 export const FichaEquipo = (props) => {
     const [show, setShow] = useState(false);
-    const [teamText, setTeamText] = useState('');
     
-    const eliminarPokemon = (pokemon) => {
-        console.log(pokemon);
-        props.setTeam(props.team.filter((x)=>x!==pokemon));
+    const eliminarPokemon = (id) => {
+        props.setTeam(props.team.filter((x)=>x[0]!==id));
         setShow(true);
     }
 
@@ -22,37 +20,40 @@ export const FichaEquipo = (props) => {
 
 
     return (
-        <ContenedorFichaEquipo className="fichaEquipo">
-            <div className="fichaEquipoName">
-                {props.data.name}
-            </div>
-            <div className="fichaEquipoSprite">
-                <img src={props.data.sprites.front_default} alt="sprite"/>
-            </div>
-            <div className="fichaEquipoProperties">
-                <div className="fichaEquipoTypes">
-                    Tipos:
-                    <ul>{types}</ul>
+        <>
+            <ContenedorFichaEquipo className="fichaEquipo">
+                <div className="fichaEquipoName">
+                    {props.data.name}
                 </div>
-                <div className="fichaEquipoAltura">
-                    Altura: {props.data.height /10} m
+                <div className="fichaEquipoSprite">
+                    <img src={props.data.sprites.front_default} alt="sprite"/>
                 </div>
-                <div className="fichaEquipoPeso">
-                    Peso: {props.data.weight /10} kg
+                <div className="fichaEquipoProperties">
+                    <div className="fichaEquipoTypes">
+                        Tipos:
+                        <ul>{types}</ul>
+                    </div>
+                    <div className="fichaEquipoAltura">
+                        Altura: {props.data.height /10} m
+                    </div>
+                    <div className="fichaEquipoPeso">
+                        Peso: {props.data.weight /10} kg
+                    </div>
+                    <div className="fichaEquipoStats">
+                        Stats:
+                        <ul>{stats}</ul>
+                    </div>
                 </div>
-                <div className="fichaEquipoStats">
-                    Stats:
-                    <ul>{stats}</ul>
-                </div>
-            </div>
-            <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.data)}>Eliminar del equipo
-            </button>
-            <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
+                <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
+                </button>
+                
+            </ContenedorFichaEquipo>
+            <SToast className="bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
                 <Toast.Body>
                 Se ha eliminado el pokemon del equipo
                 </Toast.Body>
-            </Toast>
-        </ContenedorFichaEquipo>
+            </SToast>
+        </>
     );
 }
 
@@ -74,4 +75,8 @@ const ContenedorFichaEquipo = styled.div`
     li {
         text-transform: capitalize;
     }
+`;
+
+const SToast = styled(Toast)`
+    margin: 0 auto;
 `;
