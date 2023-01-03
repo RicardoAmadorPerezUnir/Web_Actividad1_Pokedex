@@ -1,79 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { Tipo } from './Tipo';
 
 export function Tipos() {
   const [types, setTypes] = useState([]);
   const [typeDetails, setTypeDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchTypes() {
       const result = await axios.get('https://pokeapi.co/api/v2/type');
-      setTypes(result.data.results);
+      setTypes(result.data.results.filter((x)=>x.name!=="unknown"));
     }
     fetchTypes();
   }, []);
-  async function fetchTypeDetails(type) {
-    if (type.name !== "unknown"){
-      const result = await axios.get(type.url);
-      setTypeDetails([...typeDetails,[type.name, result.data]]); 
-    }  
-  } 
-
+  
+  var aux=[];
   useEffect(() => {
     if(types.length>0)
       types.forEach((type)=>{
+        async function fetchTypeDetails(type) {
+            const result = await axios.get(type.url);
+            aux.push([type.name, result.data]); 
+            if(aux.length===types.length){
+              setTypeDetails(aux);
+              setLoading(false);
+            }
+        }
         fetchTypeDetails(type);
       })
   }, [types]);
 
-  var tipos = typeDetails.map((type) => {
-    return (
-      <ContenedorTipo>
-          <div>
-            {/*Nombre*/}
-            <div>{type[0]}</div>
-            <div>
-              <div>
-                Recibe daño doble de:
-                {type[1].damage_relations.double_damage_from.map((x)=>{
-                  return x;
-                })}
-              </div>
-              {/* <div>
-                Hace daño doble a
-                {type[1].damage_relations.double_damage_from}
-              </div>
-              <div>
-                Recibe la mitad de daño de
-                {type[1].damage_relations.double_damage_from}
-              </div>
-              <div>
-                Hace la mitad de daño a
-                {type[1].damage_relations.double_damage_from}
-              </div>
-              <div>
-                No recibe daño de
-                {type[1].damage_relations.double_damage_from}
-              </div>
-              <div>
-                No hace daño a
-                {type[1].damage_relations.double_damage_from}
-              </div> */}
-            </div>
-          </div>
-      </ContenedorTipo>
-    )
-  })
-
   return (
-    // <ContenedorListaTipos>
-    //   {tipos.map((x)=>{
-    //     debugger
-    //     return x;
-    //   })}
-    // </ContenedorListaTipos>
-    <div>En construcción</div>
+    !loading?<ContenedorListaTipos>
+    {typeDetails.map((x)=><Tipo detalles={x}/> )}
+    </ContenedorListaTipos>:<div>Cargando...</div>
   )
 }
 
