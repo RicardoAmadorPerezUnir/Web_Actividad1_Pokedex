@@ -1,22 +1,22 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 export const Tipo = ({detalles}) => {
     var double_damage_from = (detalles[1].damage_relations.double_damage_from).length>0?(detalles[1].damage_relations.double_damage_from).map((x) => {
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
-    }):'-';
+    }):"-";
     var double_damage_to = (detalles[1].damage_relations.double_damage_to).length>0?(detalles[1].damage_relations.double_damage_to).map((x) => {
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
-    }):'-';
+    }):"-";
     var half_damage_to = (detalles[1].damage_relations.half_damage_to).length>0?(detalles[1].damage_relations.half_damage_to).map((x) => {
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
-    }):'-';
+    }):"-";
     var half_damage_from = (detalles[1].damage_relations.half_damage_from).length>0?(detalles[1].damage_relations.half_damage_from).map((x) => { 
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
-    }):'-';
+    }):"-";
     var no_damage_from = (detalles[1].damage_relations.no_damage_from).length>0?(detalles[1].damage_relations.no_damage_from).map((x) => {
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
-    }):'-';
+    }):"-";
     var no_damage_to = (detalles[1].damage_relations.no_damage_to).length>0?(detalles[1].damage_relations.no_damage_to).map((x) => {
         return <div className="pill" style={{backgroundColor:`var(--${x.name})`}}>{x.name}</div>
     }):"-";
@@ -27,32 +27,32 @@ export const Tipo = ({detalles}) => {
             <TipoNombre>
                 {detalles[0]}
             </TipoNombre>
-            <Properties style={{borderColor:`var(--${detalles[0]})`}}>
-                    <div>
-                        <div className="efect_name">Efectivo contra</div>
-                        <div className="type_list">{double_damage_to}</div>
-                    </div>
-                    <div>
-                        <div className="efect_name">Debil contra</div>
-                        <div className="type_list">{double_damage_from}</div>
-                    </div>
-                    <div>
-                        <div className="efect_name">No efectivo contra</div>
-                        <div className="type_list">{half_damage_to}</div>
-                    </div>
-                    <div>
-                        <div className="efect_name">Resistente contra</div>
-                        <div className="type_list">{half_damage_from}</div>
-                    </div>
-                    <div>
-                        <div className="efect_name">Inmune a</div>
-                        <div className="type_list">{no_damage_from}</div>
-                    </div>
-                    <div>
-                        <div className="efect_name">Inútil contra</div>
-                        <div className="type_list">{no_damage_to}</div>
-                    </div>
-            </Properties>
+            <TypeProperties style={{borderColor:`var(--${detalles[0]})`}}>
+                <div>
+                    <div className="efect_name">Efectivo contra</div>
+                    <div className="type_list">{double_damage_to}</div>
+                </div>
+                <div>
+                    <div className="efect_name">Debil contra</div>
+                    <div className="type_list">{double_damage_from}</div>
+                </div>
+                <div>
+                    <div className="efect_name">No efectivo contra</div>
+                    <div className="type_list">{half_damage_to}</div>
+                </div>
+                <div>
+                    <div className="efect_name">Resistente contra</div>
+                    <div className="type_list">{half_damage_from}</div>
+                </div>
+                <div>
+                    <div className="efect_name">Inmune a</div>
+                    <div className="type_list">{no_damage_from}</div>
+                </div>
+                <div>
+                    <div className="efect_name">Inútil contra</div>
+                    <div className="type_list">{no_damage_to}</div>
+                </div>
+            </TypeProperties>
         </ContenedorTipo>
     );
 }
@@ -78,22 +78,24 @@ const TipoNombre = styled.div`
     display:flex;
     justify-content: center;
     align-items: center;
-    width: 33%;
+    width: 28%;
 `;
 
-const Properties = styled.div`
+const TypeProperties = styled.div`
     display: flex;
     flex-direction: column;
-    width: 66%;
+    width: 72%;
     justify-content: center;
     border-left: 3px dashed;
 
     .efect_name{
+        padding: 0.1rem;
         font-weight: bold;
         text-align: center;
     }
 
     .type_list{
+        padding: 0.1rem;
         justify-content: center;
         text-transform: capitalize;
         display: flex;

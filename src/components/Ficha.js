@@ -1,12 +1,12 @@
-import React , { useEffect, useState } from 'react';
-import { useContador } from '../hooks/useContador';
-import styled from 'styled-components';
+import React , { useState } from "react";
+import { useContador } from "../hooks/useContador";
+import styled from "styled-components";
 
-import { Toast } from 'react-bootstrap';
+import { Toast } from "react-bootstrap";
 
 export const Ficha = (props) => {
     const [show, setShow] = useState(false);
-    const [teamText, setTeamText] = useState('');
+    const [teamText, setTeamText] = useState("");
     const {contador, incrementar} = useContador(props.team.length + 1);
     
     const guardarPokemon = (pokemon_json) => {
@@ -37,22 +37,32 @@ export const Ficha = (props) => {
             <div className="fichaSprite">
                 <img src={props.data.sprites.front_default} alt="sprite"/>
             </div>
-            <div className="fichaProperties">
-                <div className="fichaTypes">
+            <FichaProperties>
+                <div className="fLabelTypes">
                     Tipos:
+                </div>
+                <div className="fichaTypes">
                     <TiposDiv>{types}</TiposDiv>
                 </div>
-                <div className="fichaAltura">
-                    Altura: {props.data.height /10} m
+                <div className="pokeData">
+                    <div className="dataLabel">
+                        Altura:
+                    </div>
+                    {props.data.height /10} m
                 </div>
-                <div className="fichaPeso">
-                    Peso: {props.data.weight /10} kg
+                <div className="pokeData">
+                    <div className="dataLabel">
+                        Peso:
+                    </div>
+                    {props.data.weight /10} kg
                 </div>
-                <div className="fichaStats">
-                    Stats:
+                <div className="pokeDataStats">
+                    <div className="dataLabel">
+                        Estadísticas:
+                    </div>
                     <ul>{stats}</ul>
                 </div>
-            </div>
+            </FichaProperties>
             <button className="fichaButton" onClick={() => {guardarPokemon(props.data);incrementar()}}>Añadir a mi equipo
             </button>
             <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
@@ -77,10 +87,38 @@ const ContenedorFicha = styled.div`
 
     .fichaName {
         text-transform: capitalize;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     li {
         text-transform: capitalize;
+    }
+`;
+
+const FichaProperties = styled.div`
+
+    .fLabelTypes {
+        font-weight: bold;
+        margin-bottom: .5rem;
+    }
+    .fichaTypes {
+        margin-bottom: .5rem;
+    }
+    .pokeData {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: .5rem;
+    }
+    .dataLabel {
+        font-weight: bold;
+        margin-right: .5rem;
+    }
+    .pokeDataStats {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: .5rem;
     }
 `;
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { FichaEquipo } from './FichaEquipo';
-import styled from 'styled-components';
+import React from "react";
+import { FichaEquipo } from "./FichaEquipo";
+import styled from "styled-components";
 
 export const MiEquipo = (props) => {
     var equipo = props.props.team.length>0 ? props.props.team.map((x)=>{
@@ -18,4 +18,5 @@ const NoInfo = styled.div`
     width: 50%;
     font-size: 2rem;
     color: #EA6548;
+    text-align: center;
 `;

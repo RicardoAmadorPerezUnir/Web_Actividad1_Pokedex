@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import axios from 'axios';
-import { Modal } from 'react-bootstrap';
-import { Ficha } from './Ficha';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import axios from "axios";
+import { Modal } from "react-bootstrap";
+import { Ficha } from "./Ficha";
 
 export const Pokedex = (props) => {
   const [pokemon_list, setPokemon] = useState([]);
@@ -11,7 +11,7 @@ export const Pokedex = (props) => {
 
   useEffect(() => {
     async function fetchPokemon() {
-      const result = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+      const result = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=151");
       setPokemon(result.data.results);
     }
     fetchPokemon();
@@ -95,6 +95,7 @@ const ContenedorPokemon = styled.div`
 
     .pokemonName {
         text-transform: capitalize;
+        font-weight: bold;
         margin-bottom: .5rem;
         font-size: 1.2rem;
     }
@@ -102,7 +103,7 @@ const ContenedorPokemon = styled.div`
     .pokedexButton {
         background-color: #EA6548;
         border: 1px solid #ccc;
-        border-radius: 5px;
+        border-radius: 15px;
         padding: .5rem;
         font-size: 1rem;
         cursor: pointer;

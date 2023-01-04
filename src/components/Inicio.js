@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Ficha } from './Ficha';
-import { Toast } from 'react-bootstrap';
+import React, { useState } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { Ficha } from "./Ficha";
+import { Toast } from "react-bootstrap";
 
 export const Inicio = (props) => {
-  const [query_pokemon, setSearch] = useState('');
+  const [query_pokemon, setSearch] = useState("");
   const [pokemon, setPokemon] = useState(null);
   const [show, setShow] = useState(false);
   const [error, setError] = useState(null);
 
   async function handleSearch() {
-    if (query_pokemon === '') {
+    if (query_pokemon === "") {
         setError("Tienes que introducir un nombre de pokemon existente");
         setShow(true);
         setPokemon(null);

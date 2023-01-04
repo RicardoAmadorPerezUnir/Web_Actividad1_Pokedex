@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import { Tipo } from './Tipo';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import { Tipo } from "./Tipo";
 
 export function Tipos() {
   const [types, setTypes] = useState([]);
@@ -10,7 +10,7 @@ export function Tipos() {
 
   useEffect(() => {
     async function fetchTypes() {
-      const result = await axios.get('https://pokeapi.co/api/v2/type');
+      const result = await axios.get("https://pokeapi.co/api/v2/type");
       setTypes(result.data.results.filter((x)=>x.name!=="unknown"&&x.name!=="shadow"));
     }
     fetchTypes();

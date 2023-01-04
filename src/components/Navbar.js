@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import { Inicio } from './Inicio';
-import { Pokedex } from './Pokedex';
-import { Tipos } from './Tipos';
-import { Movimientos } from './Movimientos';
-import { MiEquipo } from './MiEquipo';
+import { Inicio } from "./Inicio";
+import { Pokedex } from "./Pokedex";
+import { Tipos } from "./Tipos";
+import { Movimientos } from "./Movimientos";
+import { MiEquipo } from "./MiEquipo";
 
 
 export const Navbar = (props) => {

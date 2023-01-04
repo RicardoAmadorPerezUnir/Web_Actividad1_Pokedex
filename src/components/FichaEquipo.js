@@ -1,7 +1,7 @@
-import React , { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React , { useEffect, useState } from "react";
+import styled from "styled-components";
 
-import { Toast } from 'react-bootstrap';
+import { Toast } from "react-bootstrap";
 
 export const FichaEquipo = (props) => {
     const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ export const FichaEquipo = (props) => {
     }
 
     var types = props.data.types.map((type) => {
-        return <li>{type.type.name}</li>
+        return <div className="pill" style={{backgroundColor:`var(--${type.type.name})`}}>{type.type.name}</div>
     });
     var stats = props.data.stats.map((stat) => {
         return <li>{stat.stat.name}: {stat.base_stat}</li>
@@ -31,7 +31,7 @@ export const FichaEquipo = (props) => {
                 <div className="fichaEquipoProperties">
                     <div className="fichaEquipoTypes">
                         Tipos:
-                        <ul>{types}</ul>
+                        <TiposDiv>{types}</TiposDiv>
                     </div>
                     <div className="fichaEquipoAltura">
                         Altura: {props.data.height /10} m
@@ -79,4 +79,8 @@ const ContenedorFichaEquipo = styled.div`
 
 const SToast = styled(Toast)`
     margin: 0 auto;
+`;
+
+const TiposDiv = styled.div`
+    display:flex;
 `;
