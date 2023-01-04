@@ -57,7 +57,7 @@ const ContenedorMov = styled.div`
     flex-direction: column;
     margin: .5rem;
     width: calc(25% - 1rem);
-    height: 460px;
+    height: 512px;
     padding: 1rem;
 `;
 
@@ -88,7 +88,7 @@ const MovProperties = styled.div`
         border: 1px solid #aaa;
         border-radius: 25px;
         color: #fff;
-        margin: 0.1rem;
+        margin: 0.4rem auto;
         width: 25%;
       }
 
