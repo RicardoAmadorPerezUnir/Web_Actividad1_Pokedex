@@ -77,7 +77,10 @@ const ContenedorPokedex = styled.div`
 `;
 
 const SModal = styled(Modal)`
-    .ficha{
+    .modal-body{
+      padding: 2rem;
+    }
+    .linearGradient{
         width: 75%;
     }
 `;

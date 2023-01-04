@@ -38,6 +38,12 @@ export const Inicio = (props) => {
         type="text"
         value={query_pokemon}
         onChange={event => setSearch(event.target.value)}
+        onKeyDown={event => {
+          if(event.key==="Enter"){
+            setSearch(event.target.value); 
+            handleSearch()
+          }
+          }}
       />
       <button id="buscar" onClick={handleSearch}>Buscar</button>
       {pokemon && (
@@ -59,7 +65,7 @@ const ContenedorInicio = styled.div`
   justify-content: flex-start;
   margin-top: 15%;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 
   h2 {
@@ -76,6 +82,10 @@ const ContenedorInicio = styled.div`
   button {
     width: 10rem;
     height: 2rem;
-    margin-bottom: 1rem;
+    margin: .5rem auto;
+  }
+
+  .linearGradient{
+    width: 20%;
   }
 `;
