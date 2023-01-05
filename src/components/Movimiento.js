@@ -44,7 +44,7 @@ export const Movimiento = ({detalles}) => {
                 </div>
                 <div>
                     <div className="move_label">Efecto</div>
-                    <div className="move_detail">{detalles[1].effect_entries[0].effect}</div>
+                    <div className="move_detail effect">{detalles[1].effect_entries[0].effect}</div>
                 </div>
             </MovProperties>
         </ContenedorMov>
@@ -53,12 +53,14 @@ export const Movimiento = ({detalles}) => {
 
 
 const ContenedorMov = styled.div`
+    background-color: #fff;
     display: flex;
     flex-direction: column;
-    margin: .5rem;
-    width: calc(25% - 1rem);
+    margin: 1%;
+    width: 23%;
     height: 512px;
     padding: 1rem;
+    border-radius: 16px;
 `;
 
 const MovNombre = styled.div`
@@ -101,6 +103,14 @@ const MovProperties = styled.div`
     .move_detail{
         padding: 0.1rem;
         text-align: center;
+    }
+
+    .effect{
+        height: 120px;
+        text-align: center;
+        overflow: hidden;
+        overflow-y: auto;
+        padding: 4px;
     }
 
     .type_list{

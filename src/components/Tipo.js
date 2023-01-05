@@ -59,13 +59,14 @@ export const Tipo = ({detalles}) => {
 
 
 const ContenedorTipo = styled.div`
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     margin: .5rem;
     width: calc(33% - 1rem);
-    height: 400px;
-    padding: 1rem;
-    border: 5px solid;
+    height: 450px;
+    padding: 1.5rem;
+    border: 10px solid;
     border-radius: 10px;
 `;
 

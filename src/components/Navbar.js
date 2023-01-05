@@ -34,7 +34,7 @@ export const Navbar = (props) => {
 
 const Cabecera = styled.div`
     background-color: #f5f5f5; 
-    height: 50px;
+    height: 80px;
     width: 100%;
     display: flex;
     align-items: center;

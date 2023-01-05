@@ -45,7 +45,7 @@ export const Pokedex = (props) => {
 
     if (pokemon_list !== null) {
       return (
-        <ContenedorPokedex>
+        <ContenedorPokedex className="fondo">
           {pokemones}
           <SModal show={show} onHide={() => setShow(false)}>
             <Modal.Header closeButton>
@@ -77,9 +77,20 @@ const ContenedorPokedex = styled.div`
 `;
 
 const SModal = styled(Modal)`
+    .modal-header{
+      background-color: #bb1f25;
+      color: #fff;
+    }
+
+    .modal-title{
+      text-align: center;
+      width: 100%;
+    }
+
     .modal-body{
       padding: 2rem;
     }
+
     .linearGradient{
         width: 75%;
     }
@@ -87,6 +98,7 @@ const SModal = styled(Modal)`
 
 
 const ContenedorPokemon = styled.div`
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
@@ -95,6 +107,7 @@ const ContenedorPokemon = styled.div`
     margin: 1rem;
     width: 20%;
     padding: .5rem;
+    border-radius: 16px;
 
     .pokemonName {
         text-transform: capitalize;

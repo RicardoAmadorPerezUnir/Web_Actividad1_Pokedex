@@ -10,7 +10,7 @@ export function Movimientos() {
 
   useEffect(() => {
     async function fetchMoves() {
-      const result = await axios.get("https://pokeapi.co/api/v2/move?offset=390&limit=24");
+      const result = await axios.get("https://pokeapi.co/api/v2/move?offset=390&limit=52");
       setMoves(result.data.results);
     }
     fetchMoves();
@@ -33,9 +33,12 @@ export function Movimientos() {
   }, [moves]);
 
   return (
-    !loading?<ContenedorListaMoves>
+    !loading?<ContenedorListaMoves className="fondo">
     {moveDetails.map((x)=><Movimiento detalles={x}/> )}
-    </ContenedorListaMoves>:<div>Cargando...</div>
+    </ContenedorListaMoves>:
+      <div className="text-center">
+        <div className="spinner-border text-danger spinner-border-lg" style={{width:"10rem", height:"10rem", marginTop:"250px"}} role="status"></div>
+      </div>
   )
 }
 
@@ -47,5 +50,4 @@ const ContenedorListaMoves = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 100%;
-  height: 100vh;
 `;

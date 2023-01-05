@@ -21,13 +21,6 @@ export const Ficha = (props) => {
         }
       }
 
-    var types = props.data.types.map((type) => {
-        return <div className="pill" style={{backgroundColor:`var(--${type.type.name})`}}>{type.type.name}</div>
-    });
-    var stats = props.data.stats.map((stat) => {
-        return <li>{stat.stat.name}: {stat.base_stat}</li>
-    });
-
     return (
         <LinearGradient className="linearGradient" style={{background: `${props.data.types.length>1?`linear-gradient(var(--${props.data.types[0].type.name}), var(--${props.data.types[1].type.name}))`:`linear-gradient(var(--${props.data.types[0].type.name}),var(--${props.data.types[0].type.name}))`}`}}>
             <ContenedorFicha className="ficha">
@@ -40,7 +33,7 @@ export const Ficha = (props) => {
                 <FichaProperties props={props} />
                 <button className="fichaButton" onClick={() => {guardarPokemon(props.data);incrementar()}}>Añadir a mi equipo
                 </button>
-                <Toast className="bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                <Toast className="bg-light toast border-success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
                     <Toast.Body>
                     {teamText}
                     </Toast.Body>
@@ -74,6 +67,11 @@ const ContenedorFicha = styled.div`
 
     .fichaButton{
         margin-bottom: 1rem;
+        width: 10rem;
+        height: 2.5rem;
+        margin: .5rem auto;
+        border-radius: 16px;
+        background-color: #ededed;
     }
 `;
 

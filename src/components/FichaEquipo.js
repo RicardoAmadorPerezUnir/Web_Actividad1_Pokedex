@@ -1,14 +1,12 @@
-import React , { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Toast } from "react-bootstrap";
 import { FichaProperties } from "./FichaProperties";
 
 export const FichaEquipo = (props) => {
-    const [show, setShow] = useState(false);
-    
+
     const eliminarPokemon = (id) => {
         props.setTeam(props.team.filter((x)=>x[0]!==id));
-        setShow(true);
+        props.setShow(true);
     }
 
     return (
@@ -20,14 +18,9 @@ export const FichaEquipo = (props) => {
                 <div className="fichaSprite">
                     <img src={props.data.sprites.front_default} alt="sprite"/>
                 </div>
-                    <FichaProperties props={props} />
-                    <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
-                    </button>
-                <SToast className="bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
-                    <Toast.Body>
-                    Se ha eliminado el pokemon del equipo
-                    </Toast.Body>
-                </SToast>
+                <FichaProperties props={props} />
+                <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
+                </button>
             </ContenedorFichaEquipo>
         </LinearGradient>
     );
@@ -62,8 +55,12 @@ const ContenedorFichaEquipo = styled.div`
     li {
         text-transform: capitalize;
     }
-`;
 
-const SToast = styled(Toast)`
-    margin: 0 auto;
+    button{
+        width: 10rem;
+        height: 2.5rem;
+        margin: .5rem auto;
+        border-radius: 16px;
+        background-color: #ededed
+    }
 `;

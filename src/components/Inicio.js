@@ -30,7 +30,7 @@ export const Inicio = (props) => {
   }
 
   return (
-    <ContenedorInicio>
+    <ContenedorInicio className="pagInicio">
       <h2>
         Busca tu pokemon favorito
       </h2>
@@ -59,11 +59,12 @@ export const Inicio = (props) => {
 }
 
 const ContenedorInicio = styled.div`
+// font-family: "dogica_pixelbold"
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: 15%;
+  padding-top: 15%;
   align-items: center;
   min-height: 100vh;
   width: 100%;
@@ -81,8 +82,10 @@ const ContenedorInicio = styled.div`
 
   button {
     width: 10rem;
-    height: 2rem;
+    height: 2.5rem;
     margin: .5rem auto;
+    border-radius: 16px;
+    background-color: white;
   }
 
   .linearGradient{

@@ -32,7 +32,7 @@ export const FichaProperties = ({props}) => {
                 <div className="dataLabel">
                     Estadísticas:
                 </div>
-                <ul>{stats}</ul>
+                <ul className="pokeLi">{stats}</ul>
             </div>
         </FichaEquipoProperties>
     );
@@ -40,6 +40,7 @@ export const FichaProperties = ({props}) => {
 
 
 const FichaEquipoProperties = styled.div`
+    font-size: 15px;
 
     .fichaTypes {
         margin-bottom: .5rem;

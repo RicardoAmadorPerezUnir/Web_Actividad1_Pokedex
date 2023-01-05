@@ -33,9 +33,12 @@ export function Tipos() {
   }, [types]);
 
   return (
-    !loading?<ContenedorListaTipos>
+    !loading?<ContenedorListaTipos className="fondo">
     {typeDetails.map((x)=><Tipo detalles={x}/> )}
-    </ContenedorListaTipos>:<div>Cargando...</div>
+    </ContenedorListaTipos>:
+      <div className="text-center">
+          <div className="spinner-border text-danger spinner-border-lg" style={{width:"10rem", height:"10rem", marginTop:"250px"}} role="status"></div>
+      </div>
   )
 }
 
@@ -47,5 +50,4 @@ const ContenedorListaTipos = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 100%;
-  height: 100vh;
 `;
