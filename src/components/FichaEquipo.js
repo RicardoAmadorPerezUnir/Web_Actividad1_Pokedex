@@ -1,7 +1,7 @@
-import React , { useEffect, useState } from "react";
+import React , { useState } from "react";
 import styled from "styled-components";
-
 import { Toast } from "react-bootstrap";
+import { FichaProperties } from "./FichaProperties";
 
 export const FichaEquipo = (props) => {
     const [show, setShow] = useState(false);
@@ -11,65 +11,52 @@ export const FichaEquipo = (props) => {
         setShow(true);
     }
 
-    var types = props.data.types.map((type) => {
-        return <div className="pill" style={{backgroundColor:`var(--${type.type.name})`}}>{type.type.name}</div>
-    });
-    var stats = props.data.stats.map((stat) => {
-        return <li>{stat.stat.name}: {stat.base_stat}</li>
-    });
-
-
     return (
-        <>
-            <ContenedorFichaEquipo className="fichaEquipo">
+        <LinearGradient className="linearGradient" style={{background: `${props.data.types.length>1?`linear-gradient(var(--${props.data.types[0].type.name}), var(--${props.data.types[1].type.name}))`:`linear-gradient(var(--${props.data.types[0].type.name}),var(--${props.data.types[0].type.name}))`}`}}>
+            <ContenedorFichaEquipo>
                 <div className="fichaEquipoName">
                     {props.data.name}
                 </div>
-                <div className="fichaEquipoSprite">
+                <div className="fichaSprite">
                     <img src={props.data.sprites.front_default} alt="sprite"/>
                 </div>
-                <div className="fichaEquipoProperties">
-                    <div className="fichaEquipoTypes">
-                        Tipos:
-                        <TiposDiv>{types}</TiposDiv>
-                    </div>
-                    <div className="fichaEquipoAltura">
-                        Altura: {props.data.height /10} m
-                    </div>
-                    <div className="fichaEquipoPeso">
-                        Peso: {props.data.weight /10} kg
-                    </div>
-                    <div className="fichaEquipoStats">
-                        Stats:
-                        <ul>{stats}</ul>
-                    </div>
-                </div>
-                <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
-                </button>
-                
+                    <FichaProperties props={props} />
+                    <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
+                    </button>
+                <SToast className="bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
+                    <Toast.Body>
+                    Se ha eliminado el pokemon del equipo
+                    </Toast.Body>
+                </SToast>
             </ContenedorFichaEquipo>
-            <SToast className="bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide >
-                <Toast.Body>
-                Se ha eliminado el pokemon del equipo
-                </Toast.Body>
-            </SToast>
-        </>
+        </LinearGradient>
     );
 }
 
+
+const LinearGradient = styled.div`
+    margin: 1rem auto;
+    display: flex;
+    border-radius: 15px;
+    width: 30%;
+`;
+
 const ContenedorFichaEquipo = styled.div`
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 2rem auto;
-    width: 25%;
     padding: 2rem;
+    background-color: #fff;
+    width: 90%;
+    margin: 5%;
 
     .fichaEquipoName {
         text-transform: capitalize;
+        font-weight: bold;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     li {
@@ -79,8 +66,4 @@ const ContenedorFichaEquipo = styled.div`
 
 const SToast = styled(Toast)`
     margin: 0 auto;
-`;
-
-const TiposDiv = styled.div`
-    display:flex;
 `;
