@@ -6,8 +6,8 @@ import styled from "styled-components";
 
 export const MiEquipo = (props) => {
     const [show, setShow] = useState(false);
-
-    var equipo = props.props.team.length>0 ? props.props.team.map((x)=>{
+    let teamLocal =   JSON.parse(localStorage.getItem('team'))
+    var equipo =teamLocal.length>0 ?teamLocal.map((x)=>{
         return <FichaEquipo data={x[1]} id={x[0]} team={props.props.team} setTeam={props.props.setTeam} setShow={setShow}/>
     }): <NoInfo>No ha agregado ningún pokemon a su equipo</NoInfo>
     
