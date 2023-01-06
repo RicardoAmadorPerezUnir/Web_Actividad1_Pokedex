@@ -49,7 +49,7 @@ export const Inicio = (props) => {
       {pokemon && (
         <Ficha data={pokemon} team={props.props.team} setTeam={props.props.setTeam}/>
       )}
-      <Toast className="d-inline-block bg-light" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+      <Toast className="d-inline-block bg-light toast border-warning" onClose={() => setShow(false)} show={show} delay={3000} autohide>
         <Toast.Body>
           {error}
         </Toast.Body>

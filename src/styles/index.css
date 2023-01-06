@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* font-face {
+  font-family: 'dogica_pixelbold';
+  src: url('./fonts/dogicapixelbold-webfont.woff2') format('woff2'),
+       url('./fonts/dogicapixelbold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+} */
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.pagInicio {
+  background-image: url("../images/fondo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fondo {
+  background-image: linear-gradient(
+    to right,
+    #ee9d63 0%,
+    #94afec 35%,
+    #a1c78e 60%,
+    #f8df78 100%
+  );
+  background-size: cover;
+  min-height: calc(100vh - 80px);
+}
+
+.pokeLi {
+  list-style: none;
+  padding-left: 0; 
+}
+
+.pokeLi li {
+  background: url("../images/mini_poke_li.png") left center no-repeat;
+  padding-left: 30px;
+}
+
+.toast {
+  font-size: 1rem;
+  margin: 0 auto;
+  position: absolute;
+  top: 90px;
+}
+
+.pill{
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #aaa;
+  border-radius: 25px;
+  color: #fff;
+  margin: 0.1rem;
+}
+
+:root{
+  --normal: #a9a878;
+  --fire: #f07f2f;
+  --water: #6890f0;
+  --grass: #78c84f;
+  --electric: #f8d030;
+  --ice: #98d8d8;
+  --fighting: #c6332c;
+  --poison: #a040a1;
+  --ground: #e0c069;
+  --flying: #a890f0;
+  --psychic: #f85888;
+  --bug: #a8b821;
+  --rock: #b7a038;
+  --ghost: #705798;
+  --dragon: #7038f9;
+  --dark: #6f5848;
+  --steel: #b8b8d0;
+  --fairy: #ff9be3; 
+}
