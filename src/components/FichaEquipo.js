@@ -2,25 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { FichaProperties } from "./FichaProperties";
 
-export const FichaEquipo = (props) => {
+export const FichaEquipo = ({data, id, team, setTeam, setShow}) => {
 
     const eliminarPokemon = (id) => {
-        localStorage.setItem('team', JSON.stringify(props.team.filter((x)=>x[0]!==id)))
-        props.setTeam(JSON.parse(localStorage.getItem('team')));
-        props.setShow(true);
+        localStorage.setItem('team', JSON.stringify(team.filter((x)=>x[0]!==id)))
+        setTeam(JSON.parse(localStorage.getItem('team')));
+        setShow(true);
     }
 
     return (
-        <LinearGradient className="linearGradient" style={{background: `${props.data.types.length>1?`linear-gradient(var(--${props.data.types[0].type.name}), var(--${props.data.types[1].type.name}))`:`linear-gradient(var(--${props.data.types[0].type.name}),var(--${props.data.types[0].type.name}))`}`}}>
+        <LinearGradient className="linearGradient" style={{background: `${data.types.length>1?`linear-gradient(var(--${data.types[0].type.name}), var(--${data.types[1].type.name}))`:`linear-gradient(var(--${data.types[0].type.name}),var(--${data.types[0].type.name}))`}`}}>
             <ContenedorFichaEquipo>
                 <div className="fichaEquipoName">
-                    {props.data.name}
+                    {data.name}
                 </div>
                 <div className="fichaSprite">
-                    <img src={props.data.sprites.front_default} alt="sprite"/>
+                    <img src={data.sprites.front_default} alt="sprite"/>
                 </div>
-                <FichaProperties props={props} />
-                <button className="fichaEquipoButton" onClick={() => eliminarPokemon(props.id)}>Eliminar del equipo
+                <FichaProperties data={data} />
+                <button className="fichaButton" onClick={() => eliminarPokemon(id)}>Eliminar del equipo
                 </button>
             </ContenedorFichaEquipo>
         </LinearGradient>
@@ -55,13 +55,5 @@ const ContenedorFichaEquipo = styled.div`
 
     li {
         text-transform: capitalize;
-    }
-
-    button{
-        width: 10rem;
-        height: 2.5rem;
-        margin: .5rem auto;
-        border-radius: 16px;
-        background-color: #ededed
     }
 `;

@@ -21,7 +21,7 @@ export const Navbar = (props) => {
                 </Cabecera>
                 <Routes>
                     <Route path="/" element={<Inicio props={props}/>}/>
-                    <Route path="/pokedex" element={<Pokedex props={props}/>}/>
+                    <Route path="/pokedex" element={<Pokedex pokedex={props}/>}/>
                     <Route path="/tipos" element={<Tipos/>}/>
                     <Route path="/movimientos" element={<Movimientos/>}/>
                     <Route path="/mi-equipo" element={<MiEquipo props={props}/>}/>

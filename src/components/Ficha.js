@@ -4,16 +4,17 @@ import { FichaProperties } from "./FichaProperties";
 import styled from "styled-components";
 import { Toast } from "react-bootstrap";
 
-export const Ficha = (props) => {
+export const Ficha = ({data, team, setTeam}) => {
     const [show, setShow] = useState(false);
     const [teamText, setTeamText] = useState("");
     const {contador, incrementar} = useContador(Math.random());
     
     const guardarPokemon = (pokemon_json) => {
-        if (props.team.length < 6) {
-            localStorage.setItem('team', JSON.stringify([...props.team, [contador, pokemon_json]]));
-            props.setTeam(JSON.parse(localStorage.getItem('team')));
-            setTeamText(`Pokemon agregado al equipo. Pokemon en el equipo: ${props.team.length + 1}`);
+        debugger;
+        if (team.length < 6) {
+            localStorage.setItem('team', JSON.stringify([...team, [contador, pokemon_json]]));
+            setTeam(JSON.parse(localStorage.getItem('team')));
+            setTeamText(`${pokemon_json.name} añadido al equipo. Tienes ${team.length + 1} pokemon en tu equipo`);
             setShow(true);
         }
         else {
@@ -23,18 +24,18 @@ export const Ficha = (props) => {
       }
 
     return (
-        <LinearGradient className="linearGradient" style={{background: `${props.data.types.length>1?`linear-gradient(var(--${props.data.types[0].type.name}), var(--${props.data.types[1].type.name}))`:`linear-gradient(var(--${props.data.types[0].type.name}),var(--${props.data.types[0].type.name}))`}`}}>
+        <LinearGradient className="linearGradient" style={{background: `${data.types.length>1?`linear-gradient(var(--${data.types[0].type.name}), var(--${data.types[1].type.name}))`:`linear-gradient(var(--${data.types[0].type.name}),var(--${data.types[0].type.name}))`}`}}>
             <ContenedorFicha className="ficha">
-                <div className="fichaName">
-                    {props.data.name}
+                <div className="fichaName font-bold">
+                    {data.name}
                 </div>
                 <div className="fichaSprite">
-                    <img src={props.data.sprites.front_default} alt="sprite"/>
+                    <img src={data.sprites.front_default} alt="sprite"/>
                 </div>
-                <FichaProperties props={props} />
-                <button className="fichaButton" onClick={() => {guardarPokemon(props.data);incrementar()}}>Añadir a mi equipo
+                <FichaProperties data={data} />
+                <button className="fichaButton" onClick={() => {guardarPokemon(data);incrementar()}}>Añadir a mi equipo
                 </button>
-                <Toast className="bg-light toast border-success" onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                <Toast className={`bg-light toast ${teamText.includes('agregado')? 'border-success':'border-warning'}`} onClose={() => setShow(false)} show={show} delay={3000} autohide>
                     <Toast.Body>
                     {teamText}
                     </Toast.Body>
@@ -57,22 +58,12 @@ const ContenedorFicha = styled.div`
 
     .fichaName {
         text-transform: capitalize;
-        font-weight: bold;
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
 
     li {
         text-transform: capitalize;
-    }
-
-    .fichaButton{
-        margin-bottom: 1rem;
-        width: 10rem;
-        height: 2.5rem;
-        margin: .5rem auto;
-        border-radius: 16px;
-        background-color: #ededed;
     }
 `;
 

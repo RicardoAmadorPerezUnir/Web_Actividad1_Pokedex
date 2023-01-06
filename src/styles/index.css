@@ -1,25 +1,63 @@
+@font-face {
+  font-family: 'dogica_pixelbold';
+  src: url('../fonts/dogicapixelbold-webfont.woff2') format('woff2'),
+       url('../fonts/dogicapixelbold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'dogica_pixelregular';
+  src: url('../fonts/dogicapixel-webfont.woff2') format('woff2'),
+       url('../fonts/dogicapixel-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "dogica_pixelregular", sans-serif!important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
 }
 
-/* font-face {
-  font-family: 'dogica_pixelbold';
-  src: url('./fonts/dogicapixelbold-webfont.woff2') format('woff2'),
-       url('./fonts/dogicapixelbold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-} */
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: .3em;
+}
+ 
+::-webkit-scrollbar-track {
+  background: none;
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: .3rem;
+}
+
+.font-size-moves {
+  font-size: 0.8rem;
+}
+
+.font-bold {
+  font-family: "dogica_pixelbold"
+}
+
+.fichaButton {
+  font-size: .8rem;
+  margin-bottom: 1rem;
+  width: 10rem;
+  height: 2.5rem;
+  margin: .5rem auto;
+  border-radius: 16px;
+  background-color: #ededed;
 }
 
 .pagInicio {
@@ -44,11 +82,13 @@ code {
 .pokeLi {
   list-style: none;
   padding-left: 0; 
+  margin: .5rem 0;
 }
 
 .pokeLi li {
   background: url("../images/mini_poke_li.png") left center no-repeat;
   padding-left: 30px;
+  padding-top: 5px;
 }
 
 .toast {

@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 
-export const FichaProperties = ({props}) => {
+export const FichaProperties = ({data}) => {
 
-    var types = props.data.types.map((type) => {
+    var types = data.types.map((type) => {
         return <div className="pill" style={{backgroundColor:`var(--${type.type.name})`}}>{type.type.name}</div>
     });
-    var stats = props.data.stats.map((stat) => {
+    var stats = data.stats.map((stat) => {
         return <li>{stat.stat.name}: {stat.base_stat}</li>
     });
 
@@ -20,13 +20,13 @@ export const FichaProperties = ({props}) => {
                 <div className="dataLabel">
                     Altura:
                 </div>
-                {props.data.height /10} m
+                {data.height /10} m
             </div>
             <div className="pokeData">
                 <div className="dataLabel">
                     Peso:
                 </div>
-                {props.data.weight /10} kg
+                {data.weight /10} kg
             </div>
             <div className="pokeDataStats">
                 <div className="dataLabel">
@@ -40,18 +40,19 @@ export const FichaProperties = ({props}) => {
 
 
 const FichaEquipoProperties = styled.div`
-    font-size: 15px;
+    font-size: 13px;
+    margin: .8rem;
 
     .fichaTypes {
-        margin-bottom: .5rem;
+        margin-bottom: .7rem;
     }
     .pokeData {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-bottom: .5rem;
     }
     .dataLabel {
-        font-weight: bold;
+        font-family: "dogica_pixelbold";
         margin-right: .5rem;
     }
     .pokeDataStats {

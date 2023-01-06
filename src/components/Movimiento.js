@@ -21,9 +21,9 @@ export const Movimiento = ({detalles}) => {
             <MovNombre>
                 {detalles[0]}
             </MovNombre>
-            <MovProperties style={{borderColor:`var(--${detalles[1].type.name})`}}>
+            <MovProperties className="font-size-moves" style={{borderColor:`var(--${detalles[1].type.name})`}}>
                 <div>
-                    <div className="move_label">Tipo</div>
+                    <div className="move_label font-bold">Tipo</div>
                     <div className="pill" style={{backgroundColor:`var(--${detalles[1].type.name})`}}>
                         <div className="type_list">
                             {detalles[1].type.name}
@@ -31,19 +31,19 @@ export const Movimiento = ({detalles}) => {
                     </div>
                 </div>
                 <div>
-                    <div className="move_label">Potencia</div>
+                    <div className="move_label font-bold">Potencia</div>
                     <div className="move_detail">{power}</div>
                 </div>
                 <div>
-                    <div className="move_label">Usos</div>
+                    <div className="move_label font-bold">Usos</div>
                     <div className="move_detail">{detalles[1].pp}</div>
                 </div>
                 <div>
-                    <div className="move_label">Precision</div>
+                    <div className="move_label font-bold">Precision</div>
                     <div className="move_detail">{accuracy}</div>
                 </div>
                 <div>
-                    <div className="move_label">Efecto</div>
+                    <div className="move_label font-bold">Efecto</div>
                     <div className="move_detail effect">{detalles[1].effect_entries[0].effect}</div>
                 </div>
             </MovProperties>
@@ -58,7 +58,7 @@ const ContenedorMov = styled.div`
     flex-direction: column;
     margin: 1%;
     width: 23%;
-    height: 512px;
+    height: 550px;
     padding: 1rem;
     border-radius: 16px;
 `;
@@ -82,16 +82,17 @@ const MovProperties = styled.div`
     justify-content: center;
     border-top: 3px dotted;
     padding-top: 1.5rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
 
     .pill{
         text-transform: uppercase;
-        font-size: 1rem;
-        padding: 0.2rem 0.4rem;
+        padding: 0.3rem .6rem;
         border: 1px solid #aaa;
         border-radius: 25px;
         color: #fff;
         margin: 0.4rem auto;
-        width: 25%;
+        width: 30%;
       }
 
     .move_label{

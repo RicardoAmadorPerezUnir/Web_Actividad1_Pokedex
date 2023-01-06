@@ -59,17 +59,17 @@ export const Inicio = (props) => {
 }
 
 const ContenedorInicio = styled.div`
-// font-family: "dogica_pixelbold"
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  padding-top: 15%;
+  padding-top: 8%;
   align-items: center;
   min-height: 100vh;
   width: 100%;
 
   h2 {
+    font-family: "dogica_pixelbold";
     font-size: 2rem;
     margin-bottom: 1rem;
   }
@@ -80,7 +80,7 @@ const ContenedorInicio = styled.div`
     margin-bottom: 1rem;
   }
 
-  button {
+  #buscar {
     width: 10rem;
     height: 2.5rem;
     margin: .5rem auto;
@@ -89,6 +89,6 @@ const ContenedorInicio = styled.div`
   }
 
   .linearGradient{
-    width: 20%;
+    width: 25%;
   }
 `;

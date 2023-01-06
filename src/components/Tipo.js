@@ -24,7 +24,7 @@ export const Tipo = ({detalles}) => {
 
     return (
         <ContenedorTipo style={{borderColor:`var(--${detalles[0]})`}}>
-            <TipoNombre>
+            <TipoNombre className="font-bold">
                 {detalles[0]}
             </TipoNombre>
             <TypeProperties style={{borderColor:`var(--${detalles[0]})`}}>
@@ -33,7 +33,7 @@ export const Tipo = ({detalles}) => {
                     <div className="type_list">{double_damage_to}</div>
                 </div>
                 <div>
-                    <div className="efect_name">Debil contra</div>
+                    <div className="efect_name">Débil contra</div>
                     <div className="type_list">{double_damage_from}</div>
                 </div>
                 <div>
@@ -63,7 +63,7 @@ const ContenedorTipo = styled.div`
     display: flex;
     flex-direction: row;
     margin: .5rem;
-    width: calc(33% - 1rem);
+    width: calc(45% - 1rem);
     height: 450px;
     padding: 1.5rem;
     border: 10px solid;
@@ -72,8 +72,7 @@ const ContenedorTipo = styled.div`
 
 const TipoNombre = styled.div`
     text-transform: capitalize;
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2rem;
     text-align: center;
     margin-bottom: 1em;
     display:flex;

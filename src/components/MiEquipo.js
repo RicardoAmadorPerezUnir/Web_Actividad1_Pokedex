@@ -15,7 +15,7 @@ export const MiEquipo = (props) => {
             {equipo}
         <Toast className="bg-light toast border-danger" onClose={() => setShow(false)} show={show} delay={3000} autohide >
             <Toast.Body>
-            Se ha eliminado el pokemon del equipo
+            Se ha eliminado del equipo
             </Toast.Body>
         </Toast>
         </EquipoContenedor>

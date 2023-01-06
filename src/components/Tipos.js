@@ -50,4 +50,5 @@ const ContenedorListaTipos = styled.div`
   align-items: center;
   margin: 0 auto;
   width: 100%;
+  gap: 3rem
 `;

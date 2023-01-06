@@ -4,7 +4,7 @@ import axios from "axios";
 import { Modal } from "react-bootstrap";
 import { Ficha } from "./Ficha";
 
-export const Pokedex = (props) => {
+export const Pokedex = ({pokedex}) => {
   const [pokemon_list, setPokemon] = useState([]);
   const [pokemon_details, setPokemonDetails] = useState([])
   const [show, setShow] = useState(false);
@@ -21,7 +21,7 @@ export const Pokedex = (props) => {
   var pokemones = pokemon_list.map((pokemon) => {
     return (
       <ContenedorPokemon>
-        <div className="pokemonName">
+        <div className="pokemonName font-bold">
           {pokemon.name}
         </div>
         <div>
@@ -54,7 +54,7 @@ export const Pokedex = (props) => {
             <Modal.Body>
                 <Ficha 
                     data={pokemon_details}
-                    team={props.props.team} setTeam={props.props.setTeam}/>
+                    team={pokedex.team} setTeam={pokedex.setTeam}/>
             </Modal.Body>
           </SModal>
         </ContenedorPokedex>
@@ -77,6 +77,10 @@ const ContenedorPokedex = styled.div`
 `;
 
 const SModal = styled(Modal)`
+    .modal-dialog {
+      max-width: 600px;
+    }
+
     .modal-header{
       background-color: #bb1f25;
       color: #fff;
@@ -111,9 +115,8 @@ const ContenedorPokemon = styled.div`
 
     .pokemonName {
         text-transform: capitalize;
-        font-weight: bold;
         margin-bottom: .5rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .pokedexButton {
