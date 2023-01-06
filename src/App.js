@@ -5,7 +5,7 @@ import "./styles/index.css"
 
 
 function App() {
-  const [team, setTeam] = useState([]);
+  const [team, setTeam] = useState( JSON.parse(localStorage.getItem('team')) || []);
   return (
     <div className="App">
       <Navbar team={team} setTeam={setTeam}/>

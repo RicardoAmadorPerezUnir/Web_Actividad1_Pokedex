@@ -5,13 +5,14 @@ import styled from "styled-components";
 import { Toast } from "react-bootstrap";
 
 export const Ficha = (props) => {
+    let teamLocal =  JSON.parse(localStorage.getItem('team'));
     const [show, setShow] = useState(false);
     const [teamText, setTeamText] = useState("");
-    const {contador, incrementar} = useContador(props.team.length + 1);
+    const {contador, incrementar} = useContador(teamLocal.length + 1);
     
     const guardarPokemon = (pokemon_json) => {
-        if (props.team.length < 6) {
-            props.setTeam([...props.team, [contador, pokemon_json]]);
+        if (teamLocal.length < 6) {
+            props.setTeam(localStorage.setItem('team', JSON.stringify([...teamLocal, [teamLocal.length+1, pokemon_json]])));
             setTeamText(`Pokemon agregado al equipo. Pokemon en el equipo: ${contador}`);
             setShow(true);
         }
