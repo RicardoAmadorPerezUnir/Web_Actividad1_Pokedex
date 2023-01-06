@@ -4,9 +4,9 @@ import { FichaProperties } from "./FichaProperties";
 
 export const FichaEquipo = (props) => {
 
-    let teamLocal =  JSON.parse(localStorage.getItem('team'))
     const eliminarPokemon = (id) => {
-        props.setTeam(localStorage.setItem('team', JSON.stringify(teamLocal.filter((x)=>x[0]!==id))));
+        localStorage.setItem('team', JSON.stringify(props.team.filter((x)=>x[0]!==id)))
+        props.setTeam(JSON.parse(localStorage.getItem('team')));
         props.setShow(true);
     }
 
