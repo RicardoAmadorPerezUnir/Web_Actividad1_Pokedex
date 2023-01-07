@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Ficha } from "./Ficha";
 import { Toast } from "react-bootstrap";
 
-export const Inicio = (props) => {
+export const Inicio = ({varInicio}) => {
   const [query_pokemon, setSearch] = useState("");
   const [pokemon, setPokemon] = useState(null);
   const [show, setShow] = useState(false);
@@ -47,7 +47,7 @@ export const Inicio = (props) => {
       />
       <button id="buscar" onClick={handleSearch}>Buscar</button>
       {pokemon && (
-        <Ficha data={pokemon} team={props.props.team} setTeam={props.props.setTeam}/>
+        <Ficha data={pokemon} team={varInicio.team} setTeam={varInicio.setTeam}/>
       )}
       <Toast className="d-inline-block bg-light toast border-warning" onClose={() => setShow(false)} show={show} delay={3000} autohide>
         <Toast.Body>

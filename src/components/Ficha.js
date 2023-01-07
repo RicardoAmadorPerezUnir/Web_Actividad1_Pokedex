@@ -35,7 +35,7 @@ export const Ficha = ({data, team, setTeam}) => {
                 <FichaProperties data={data} />
                 <button className="fichaButton" onClick={() => {guardarPokemon(data);incrementar()}}>Añadir a mi equipo
                 </button>
-                <Toast className={`bg-light toast ${teamText.includes('agregado')? 'border-success':'border-warning'}`} onClose={() => setShow(false)} show={show} delay={3000} autohide>
+                <Toast className={`bg-light toast ${teamText.includes('añadido')? 'border-success':'border-warning'}`} onClose={() => setShow(false)} show={show} delay={3000} autohide>
                     <Toast.Body>
                     {teamText}
                     </Toast.Body>

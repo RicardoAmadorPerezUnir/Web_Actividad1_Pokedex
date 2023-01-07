@@ -4,10 +4,10 @@ import { FichaEquipo } from "./FichaEquipo";
 import { Toast } from "react-bootstrap";
 import styled from "styled-components";
 
-export const MiEquipo = (props) => {
+export const MiEquipo = ({miEquipo}) => {
     const [show, setShow] = useState(false);
-    var equipo =props.props.team.length>0 ?props.props.team.map((x)=>{
-        return <FichaEquipo data={x[1]} id={x[0]} team={props.props.team} setTeam={props.props.setTeam} setShow={setShow}/>
+    var equipo = miEquipo.team.length>0 ?miEquipo.team.map((x)=>{
+        return <FichaEquipo data={x[1]} id={x[0]} team={miEquipo.team} setTeam={miEquipo.setTeam} setShow={setShow}/>
     }): <NoInfo>No ha agregado ningún pokemon a su equipo</NoInfo>
     
     return (
