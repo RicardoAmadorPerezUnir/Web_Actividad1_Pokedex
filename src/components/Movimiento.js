@@ -1,16 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-/*
-Campos a leer
-----------------
-move.name
-move.power
-move.pp
-move.accuracy
-move.effect_entries[0].effect
-move.type.name
-*/
 
 export const Movimiento = ({detalles}) => {
     var accuracy = detalles[1].accuracy===null?"-":detalles[1].accuracy + "%";

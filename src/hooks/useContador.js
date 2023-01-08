@@ -7,11 +7,7 @@ function useContador(intialCount) {
     setContador((prevCount) => prevCount + 1);
   };
 
-  const decrementar = () => {
-    setContador((prevCount) => Math.max(0, prevCount - 1));
-  };
-
-  return { contador, incrementar, decrementar };
+  return { contador, incrementar };
 }
 
 export { useContador };
